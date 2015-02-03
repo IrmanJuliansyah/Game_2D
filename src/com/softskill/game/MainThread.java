@@ -8,22 +8,23 @@ public class MainThread extends Thread {
 	private GamePanel gamePanel;
 	private boolean running;
 	float dt;
+
 	public MainThread(SurfaceHolder holder, GamePanel gamePanel) {
 		this.surfaceHolder = holder;
 		this.gamePanel = gamePanel;
-		dt =0;
+		dt = 0;
 	}
 
-	void setRunning(boolean running){
+	void setRunning(boolean running) {
 		this.running = running;
 	}
-	
+
 	@Override
 	public void run() {
 		Canvas canvas;
-		
+
 		while (running) {
-			if(!gamePanel.Pause_game){
+			if (!gamePanel.Pause_game) {
 				long StartDraw = System.currentTimeMillis();
 				canvas = null;
 				try {
@@ -33,13 +34,12 @@ public class MainThread extends Thread {
 						gamePanel.Draw(canvas);
 					}
 				} finally {
-					if(canvas!=null)
+					if (canvas != null)
 						surfaceHolder.unlockCanvasAndPost(canvas);
 				}
-				
-				
+
 				long EndDraw = System.currentTimeMillis();
-				dt = (EndDraw-StartDraw)/1000.f;
+				dt = (EndDraw - StartDraw) / 1000.f;
 			}
 		}
 	}

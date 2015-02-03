@@ -21,7 +21,6 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="45dp"
             android:textStyle="bold|italic" />
-
     </RelativeLayout>
 
     <ImageView
